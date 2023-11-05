@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  mp4box:
+    specifier: ^0.5.2
+    version: 0.5.2
+
 devDependencies:
   '@builder.io/qwik':
     specifier: ^1.2.15
@@ -23,6 +28,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.7.5
     version: 6.9.0(eslint@8.52.0)(typescript@5.2.2)
+  '@vitejs/plugin-basic-ssl':
+    specifier: ^1.0.1
+    version: 1.0.1(vite@4.5.0)
   eslint:
     specifier: ^8.51.0
     version: 8.52.0
@@ -607,6 +615,15 @@ packages:
 
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+    dev: true
+
+  /@vitejs/plugin-basic-ssl@1.0.1(vite@4.5.0):
+    resolution: {integrity: sha512-pcub+YbFtFhaGRTo1832FQHQSHvMrlb43974e2eS8EKleR3p1cDdkJFPci1UhwkEf1J9Bz+wKBSzqpKp7nNj2A==}
+    engines: {node: '>=14.6.0'}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0
+    dependencies:
+      vite: 4.5.0(@types/node@20.8.9)
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -2235,6 +2252,10 @@ packages:
   /mkdirp-classic@0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
     dev: true
+
+  /mp4box@0.5.2:
+    resolution: {integrity: sha512-zRmGlvxy+YdW3Dmt+TR4xPHynbxwXtAQDTN/Fo9N3LMxaUlB2C5KmZpzYyGKy4c7k4Jf3RCR0A2pm9SZELOLXw==}
+    dev: false
 
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
