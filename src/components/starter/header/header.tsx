@@ -9,11 +9,15 @@ import {
 import avatar from "./icons/userAvatar.svg";
 import SignOut from "./icons/signOut.svg?jsx";
 import SignIn from "./icons/signIn.svg?jsx";
+import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const session = useAuthSession();
   const signOut = useAuthSignout();
   const signIn = useAuthSignin();
+
+  const location = useLocation();
+
   return (
     <header class={styles.header}>
       <div class={["container", styles.wrapper]}>
@@ -35,7 +39,7 @@ export default component$(() => {
                 <span>{session.value.user.name}</span>
                 <a
                   onClick$={() => {
-                    signOut.submit({});
+                    signOut.submit({ callbackUrl: location.url.href });
                   }}
                   href="#"
                 >
@@ -53,7 +57,7 @@ export default component$(() => {
                   onClick$={() =>
                     signIn.submit({
                       providerId: "github",
-                      options: { callbackUrl: location.href },
+                      options: { callbackUrl: location.url.href },
                     })
                   }
                   href="#"

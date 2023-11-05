@@ -45,6 +45,7 @@
     "tabWidth": 2
   },
   "dependencies": {
+    "dashjs": "^4.7.2",
     "mp4box": "^0.5.2"
   }
 }
