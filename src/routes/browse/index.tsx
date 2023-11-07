@@ -8,9 +8,10 @@ import styles from "./browse.module.css";
 import { isServer } from "@builder.io/qwik/build";
 import { useAuthSession } from "../plugin@auth";
 import type { DashMeta } from "../api/user/[uid]/feed";
-import { Avatar } from "~/components/widgets";
+import { Avatar, Box, Grid, IconButton, Typography } from "~/components/widgets";
 import { useLocation } from "@builder.io/qwik-city";
 import { getUserFeed } from "../api/user/getUserFeed";
+import Bottominfo from "~/components/video/BottomInfo";
 
 export default component$(() => {
   const videoRef = useSignal<HTMLVideoElement>();
@@ -72,20 +73,7 @@ export default component$(() => {
         onResolved={(metas) => {
           const meta = metas[0];
           return (
-            <div class={styles.hover}>
-              <Avatar
-                src={meta.upavatar}
-                sx={{
-                  width: 64,
-                  height: 64,
-                }}
-                // prevent layout shift
-                imgProps={{
-                  width: 64,
-                  height: 64,
-                }}
-              />
-            </div>
+            <Bottominfo meta={meta}/>
           );
         }}
       />

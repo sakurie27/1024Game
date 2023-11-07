@@ -62,6 +62,7 @@
     "tabWidth": 2
   },
   "dependencies": {
+    "@mui/icons-material": "^5.14.16",
     "dashjs": "^4.7.2",
     "mp4box": "^0.5.2"
   }
