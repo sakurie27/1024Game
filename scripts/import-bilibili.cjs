@@ -1,10 +1,11 @@
 #!/bin/env node
 // @ts-check
-const { readdirSync, writeFileSync } = require("fs");
+const { readdirSync, writeFileSync, copyFileSync } = require("fs");
 const { resolve, join } = require("path");
 
 const args = process.argv.slice(process.argv.findIndex((v) => v == __filename) + 1);
 const [srcDir = resolve()] = args
+const targetDir = "/opt/static/videos"
 
 const cats = readdirSync(srcDir, {
   withFileTypes: true
@@ -16,12 +17,14 @@ const meta = {}
 for (const cat of cats) {
   const files = readdirSync(join(srcDir, cat))
   meta[cat] = []
-  for (const path of files) {
-    const [_, title, bvid] = /(.*?)-(\w+).mp4/.exec(path) ?? []
+  for (const file of files) {
+    const [_, title, bvid] = /(.*?)-(\w+).mp4/.exec(file) ?? []
     
     meta[cat].push({
       title, bvid,
     })
+
+    copyFileSync(join(srcDir, cat, file), join(targetDir, `${bvid}.mp4`))
   }
 }
 
