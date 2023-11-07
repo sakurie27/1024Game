@@ -18,14 +18,14 @@ require("dotenv").config({
 const USER = process.env["MONGO_INITDB_ROOT_USERNAME"];
 const PASSWD = process.env["MONGO_INITDB_ROOT_PASSWORD"];
 const HOST = process.env["MONGO_HOST"];
-const PORT = process.env["MONGO_PORT"];
 
 const args = process.argv.slice(
   process.argv.findIndex((v) => v == __filename) + 1,
 );
 let [jsonFile = join(cwd(), "meta.json")] = args;
 
-const ME_CONFIG_MONGODB_URL = `mongodb://${USER}:${PASSWD}@${HOST}:${PORT}/`;
+const ME_CONFIG_MONGODB_URL = `mongodb://${USER}:${PASSWD}@${HOST}/`;
+console.log("mongo", ME_CONFIG_MONGODB_URL)
 const mongo = new MongoClient(ME_CONFIG_MONGODB_URL, {
   serverApi: {
     version: ServerApiVersion.v1,

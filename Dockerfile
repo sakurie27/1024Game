@@ -9,8 +9,8 @@ WORKDIR /usr/src/app
 COPY ./ ./
 FROM build AS prod-deps
 
-# Build the project
 RUN pnpm i
+# Build the project
 RUN pnpm build
 
 # Pull the same Node image and use it as the final (production image)
@@ -26,7 +26,7 @@ COPY --from=build /usr/src/app/server ./server
 COPY --from=build /usr/src/app/dist ./dist
 
 # Expose port 3000 (default port)
-EXPOSE 3000
+EXPOSE 5173
 
 # Start the application
 CMD [ "node", "server/entry.express"]

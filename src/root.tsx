@@ -21,12 +21,12 @@ export default component$(() => {
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
-        <script src="http://cdn.dashjs.org/v4.7.2/dash.all.debug.js"/>
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
       <body lang="en">
         <RouterOutlet />
+        <script src="http://cdn.dashjs.org/v4.7.2/dash.all.debug.js" />
       </body>
     </QwikCityProvider>
   );

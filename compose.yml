@@ -1,20 +1,22 @@
 version: "3.1"
 
 services:
-  mongo-dev:
-    image: mongodb/mongodb-community-server
-    restart: always
-    ports:
-      - 27017:27017
-    env_file:
-      - .env.db.local
-    networks:
-      - app_network
+  # mongo-dev:
+  #   image: mongodb/mongodb-community-server
+  #   restart: always
+  #   ports:
+  #     - 27017:27017
+  #   env_file:
+  #     - .env.local
+  #   networks:
+  #     - app_network
   mongo:
     image: mongodb/mongodb-community-server
     restart: always
+    ports:
+      - 27018:27017
     env_file:
-      - .env.db.local
+      - .env.local
     networks:
       - app_network
 
@@ -23,11 +25,15 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - 5173:5173
     depends_on:
       - mongo
     networks:
       - app_network
+    environment:
+      - PORT=5173
+    env_file:
+      - .env.local
 
 networks:
   app_network:
