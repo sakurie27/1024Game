@@ -1,16 +1,11 @@
 import {
   component$,
-  useComputed$,
   useResource$,
   useSignal,
-  useVisibleTask$,
 } from "@builder.io/qwik";
 import styles from "./browse.module.css";
-import { server$ } from "@builder.io/qwik-city";
-import type { MediaPlayerClass } from "dashjs";
 import { isServer } from "@builder.io/qwik/build";
 
-const getRandomVideo = () => {};
 export default component$(() => {
   const videoRef = useSignal<HTMLVideoElement>();
 
