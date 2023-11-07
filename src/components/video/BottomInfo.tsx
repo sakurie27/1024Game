@@ -1,42 +1,99 @@
 /** @jsxImportSource react */
 import { qwikify$ } from "@builder.io/qwik-react";
 import { Comment, Star, ThumbUp } from "@mui/icons-material";
-import { Grid, Avatar, Typography, IconButton, Box, iconButtonClasses } from "@mui/material";
+import {
+  Grid,
+  Avatar,
+  Typography,
+  IconButton,
+  Box,
+  iconButtonClasses,
+  Skeleton,
+  skeletonClasses,
+} from "@mui/material";
 export interface BottomInfoProps {
-  meta: MetaSchema;
+  meta?: MetaSchema;
 }
-export default qwikify$(function Bottominfo({ meta }: BottomInfoPros) {
+export default qwikify$(function Bottominfo({ meta }: BottomInfoProps) {
   return (
     <Grid
       container
       direction="column"
       justifyContent="flex-end"
       sx={{
-        width: "100%",
-        height: "100%",
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
         position: "absolute",
+        pointerEvents: 'none',
+        [`.${skeletonClasses.root}`]: {
+          bgcolor: "grey.900",
+        },
       }}
     >
       <Grid item xs>
         {/* TODO: danmaku */}
       </Grid>
-      <Grid item xs="auto" m="2ch" container>
-        <Avatar
-          src={meta.upavatar}
-          sx={{
-            width: 64,
-            height: 64,
-            border: "1px white solid",
-          }}
-          // prevent layout shift
-          imgProps={{
-            width: 64,
-            height: 64,
-          }}
-        />
-        <Typography variant="subtitle1" m="1ch">
-          {meta.upname}
-        </Typography>
+      <Grid item xs="auto" m="2ch" container flexWrap="nowrap">
+        {meta ? (
+          <Avatar
+            src={meta?.upavatar}
+            sx={{
+              width: 64,
+              height: 64,
+              border: "1px white solid",
+            }}
+            // prevent layout shift
+            imgProps={{
+              width: 64,
+              height: 64,
+            }}
+          />
+        ) : (
+          <Skeleton
+            sx={{
+              flexShrink: 0,
+            }}
+            animation="wave"
+            width={64}
+            height={64}
+            variant="circular"
+          />
+        )}
+        <Box
+          flexShrink={1}
+          display="flex"
+          flexDirection="column"
+          mx="2ch"
+          width="100%"
+          alignItems="space-even"
+        >
+          {meta ? (
+            <>
+              <Typography
+                variant="subtitle1"
+                fontWeight={700}
+                flexGrow={1}
+                lineHeight={1.5}
+              >
+                {meta.title}
+              </Typography>
+              <Typography variant="subtitle2" flexShrink={1}>
+                {meta.upname}
+              </Typography>
+            </>
+          ) : (
+            <>
+              <Skeleton
+                animation="wave"
+                variant="rectangular"
+                height="1.5rem"
+                width="60%"
+              ></Skeleton>
+            </>
+          )}
+        </Box>
       </Grid>
       <Box
         display="flex"
@@ -51,11 +108,11 @@ export default qwikify$(function Bottominfo({ meta }: BottomInfoPros) {
           gap: "1.5em",
           [`& .${iconButtonClasses.root}`]: {
             color: "#ffffffb0",
-            stroke: '#eeeeeee0'
-          }
+            stroke: "#eeeeeee0",
+          },
         }}
       >
-        <IconButton >
+        <IconButton>
           <ThumbUp fontSize="large" />
         </IconButton>
         <IconButton>

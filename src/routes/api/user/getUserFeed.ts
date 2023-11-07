@@ -18,7 +18,8 @@ export const getUserFeed = server$(async function (_uid: string, size = 3) {
 
     return {
       title: record.title,
-      bvid: record.bvid, aid: record.aid,
+      bvid: record.bvid,
+      aid: record.aid,
       // fixme: Qwik Bug [https://github.com/BuilderIO/qwik/issues/4417]
       dash: `${process.env['NGINX_ORIGIN']!}/dash/videos/${record.bvid}.mp4/manifest.mpd`,
       // dash: `${this.env.get('NGINX_ORIGIN')!}/dash/videos/${record.bvid}.mp4/manifest.mpd`,

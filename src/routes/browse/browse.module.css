@@ -13,15 +13,59 @@ main {
 }
 
 .main {
-  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 100%;
+  max-width: 100%;
+  position: absolute;
+  overflow-y: hidden;
+  background-color: #000;
+  padding: 0;
+}
+
+.main > * {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-box: content-box;
+  animation: transform 0.5 ease-in-out;
+}
+
+.main > :nth-child(1) {
+  background-color: green;
+  transform: translate(0, -100%);
+}
+.main > :nth-child(2) {
+  background-color: blue;
+  transform: translate(0, 0);
+}
+.main > :nth-child(3) {
+  background-color: purple;
+  transform: translate(0, 100%);
 }
 
 .box {
   position: relative;
   width: 100%;
   height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .hover {
@@ -31,7 +75,7 @@ main {
 }
 
 .fab {
-  position: fixed;
+  position: absolute;
   right: 1rem;
   bottom: 1rem;
 }

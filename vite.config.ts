@@ -21,6 +21,11 @@ export default defineConfig((env) => {
       ENABLE_DEBUG_LOGGING: "true",
       MONGODB_URL: `"mongodb://${USER}:${PASSWD}@${HOST}/"`,
     },
+    optimizeDeps: {
+      include: [
+        "@auth/core"
+      ]
+    },
     plugins: [qwikCity({}), qwikVite({}), tsconfigPaths(), qwikReact()],
     preview: {
       headers: {
