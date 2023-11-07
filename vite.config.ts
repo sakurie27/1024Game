@@ -13,6 +13,7 @@ export default defineConfig((env) => {
   // console.log(env.mode,record)
   return {
     define: {
+      "NGINX_VOD_ROOT": JSON.stringify(record.NGINX_VOD_ROOT),
       "ENABLE_DEBUG_LOGGING": 'true',
       "MONGODB_URL": `"${record.ME_CONFIG_MONGODB_URL.replace(/(\/\/(?:.*?@)?)(mongo)/, (_, g1) => {
         return g1 + record.MONGO_HOST
